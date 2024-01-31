@@ -1,5 +1,6 @@
 package com.tweetero.api.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,9 @@ import com.tweetero.api.models.TweetModel;
 import com.tweetero.api.services.TweetService;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -36,4 +40,11 @@ public class TweetController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(tweet.get());
     }
+
+    @GetMapping
+    public ResponseEntity<List<TweetModel>> getAllTweets(){
+        List<TweetModel> tweets = tweetService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(tweets);
+    }
+    
 }

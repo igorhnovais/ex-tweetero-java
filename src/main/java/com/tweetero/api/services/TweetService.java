@@ -1,6 +1,7 @@
 package com.tweetero.api.services;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class TweetService {
     }
 
     public TweetModel saveTweet(TweetDTO dto) {
+
         Optional<UserModel> user = userRepository.findById(dto.getUserId());
 
         if(!user.isPresent()) {
@@ -30,5 +32,9 @@ public class TweetService {
 
         TweetModel tweet = new TweetModel(dto, user.get());
         return Optional.of(tweetRepository.save(tweet));
+    }
+
+    public List<TweetModel> findAll() {
+        return tweetRepository.findAll();
     }
 }

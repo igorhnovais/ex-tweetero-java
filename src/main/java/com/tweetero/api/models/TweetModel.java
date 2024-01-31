@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 
 public class TweetModel {
 
-    TweetModel(TweetDTO dto, UserModel user) {
+    public TweetModel(TweetDTO dto, UserModel user) {
         this.text = dto.getText();
         this.user = user;
     }

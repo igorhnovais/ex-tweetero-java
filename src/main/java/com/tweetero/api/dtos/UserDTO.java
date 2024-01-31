@@ -2,7 +2,9 @@ package com.tweetero.api.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 public class UserDTO {
 
     @NotBlank(message = "Field not is empty")

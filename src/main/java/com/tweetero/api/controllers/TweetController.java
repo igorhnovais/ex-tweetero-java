@@ -17,6 +17,7 @@ import com.tweetero.api.services.TweetService;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -44,6 +45,12 @@ public class TweetController {
     @GetMapping
     public ResponseEntity<List<TweetModel>> getAllTweets(){
         List<TweetModel> tweets = tweetService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(tweets);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<TweetModel>> getAllTweetsByUserId(@PathVariable Long userId){
+        List<TweetModel> tweets = tweetService.findAllByUserId(userId);
         return ResponseEntity.status(HttpStatus.OK).body(tweets);
     }
     

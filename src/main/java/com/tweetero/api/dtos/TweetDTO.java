@@ -13,6 +13,6 @@ public class TweetDTO {
     private String text;
 
     @NotNull(message = "Field not is empty")
-    private String username;
+    private Long userId;
     
 }

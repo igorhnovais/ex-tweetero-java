@@ -1,5 +1,7 @@
 package com.tweetero.api.models;
 
+import com.tweetero.api.dtos.TweetDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "tweets")
 
 public class TweetModel {
+
+    TweetModel(TweetDTO dto, UserModel user) {
+        this.text = dto.getText();
+        this.user = user;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

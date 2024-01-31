@@ -3,7 +3,9 @@ package com.tweetero.api.dtos;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 public class TweetDTO {
 
     @NotBlank(message = "Field not is empty")
@@ -11,6 +13,6 @@ public class TweetDTO {
     private String text;
 
     @NotNull(message = "Field not is empty")
-    private Long username;
+    private String username;
     
 }
